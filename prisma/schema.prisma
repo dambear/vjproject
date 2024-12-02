@@ -1,0 +1,26 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+
+model user {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  password String
+  isAdmin  Boolean @default(false)
+}
+
+model event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  imglink     String
+  description String
+  address     String
+  eventdate   DateTime
+}
