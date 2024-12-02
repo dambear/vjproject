@@ -1,7 +1,4 @@
 import { useState } from "react"
-import { PrismaClient } from "@prisma/client"
-
-const prisma = new PrismaClient()
 
 const AdminHome = () => {
   const [event, setEvent] = useState({
@@ -19,18 +16,28 @@ const AdminHome = () => {
       [name]: value,
     }))
   }
+
   const createEvent = async (event) => {
     try {
-      const data = await prisma.event.create({
-        data: {
+      const response = await fetch("http://localhost:3000/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           title: event.title,
-          imglink: event.imglink,
+          imgLink: event.imglink,
           description: event.description,
           address: event.address,
-          eventdate: event.eventdate,
-        },
+          eventDate: event.eventdate,
+        }),
       })
 
+      if (!response.ok) {
+        throw new Error("Network response was not ok")
+      }
+
+      const data = await response.json()
       return data
     } catch (error) {
       console.error("Error creating event:", error)
@@ -50,6 +57,7 @@ const AdminHome = () => {
       console.error("Error creating event:", error)
     }
   }
+
   return (
     <div>
       <h1>Add Event</h1>
