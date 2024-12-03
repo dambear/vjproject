@@ -17,7 +17,7 @@ const AdminHome = () => {
     }))
   }
 
-  const createEvent = async (event) => {
+  const createEvent = async (eventData) => {
     try {
       const response = await fetch("http://localhost:3000/events", {
         method: "POST",
@@ -25,16 +25,17 @@ const AdminHome = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          title: event.title,
-          imgLink: event.imglink,
-          description: event.description,
-          address: event.address,
-          eventDate: event.eventdate,
+          title: eventData.title,
+          imglink: eventData.imglink,
+          description: eventData.description,
+          address: eventData.address,
+          eventDate: new Date(eventData.eventdate).toISOString(),
         }),
       })
 
       if (!response.ok) {
-        throw new Error("Network response was not ok")
+        const errorText = await response.text()
+        throw new Error(`Network response was not ok: ${errorText}`)
       }
 
       const data = await response.json()
