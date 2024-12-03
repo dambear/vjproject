@@ -9,15 +9,15 @@ const Sidebar = () => {
       <ul className="flex flex-col p-4 space-y-4">
         <li>
           <Link
-            to="/admindashboard"
+            to="/admin/event"
             className="block px-4 py-2 rounded hover:bg-gray-200"
           >
-            Dashboard
+            Events
           </Link>
         </li>
         <li>
           <Link
-            to="/addevent"
+            to="/admin/addevent"
             className="block px-4 py-2 rounded hover:bg-gray-200"
           >
             Add Event

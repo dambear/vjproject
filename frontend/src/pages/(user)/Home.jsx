@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <p>Shedule Events</p>
 
-      <div className=" flex">
+      <div className="flex items-center justify-center">
         <EventCard event={event} />
       </div>
     </>

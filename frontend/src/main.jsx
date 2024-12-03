@@ -7,10 +7,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import AdminLayout from "./layouts/AdminLayout.jsx"
 import UserLayout from "./layouts/UserLayout.jsx"
-import AdminHome from "./pages/(admin)/AdminHome.jsx"
+import AdminHome from "./pages/(admin)/EventAdd.jsx"
 import Login from "./pages/auth/Login.jsx"
 import Register from "./pages/auth/Register.jsx"
 import Home from "./pages/(user)/Home.jsx"
+import EventTable from "./pages/(admin)/EventTable.jsx"
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        path: "/admin",
+        path: "/admin/event",
+        element: <EventTable />,
+      },
+      {
+        path: "/admin/addevent",
         element: <AdminHome />,
       },
     ],

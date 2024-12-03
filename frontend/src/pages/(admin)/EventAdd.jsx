@@ -60,59 +60,86 @@ const AdminHome = () => {
   }
 
   return (
-    <div>
-      <h1>Add Event</h1>
+    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg">
+      <h1 className="text-2xl font-bold mb-6">Add Event</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
+        <div className="mb-4">
+          <label className="block text-gray-700">Title:</label>
           <input
             type="text"
             name="title"
             value={event.title}
             onChange={handleChange}
             required
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div>
-          <label>Image Link:</label>
+        <div className="mb-4">
+          <label className="block text-gray-700">Image Link:</label>
           <input
             type="text"
             name="imglink"
             value={event.imglink}
             onChange={handleChange}
             required
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div>
-          <label>Description:</label>
+        <div className="mb-4">
+          <label className="block text-gray-700">Description:</label>
           <textarea
             name="description"
             value={event.description}
             onChange={handleChange}
             required
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div>
-          <label>Address:</label>
-          <input
-            type="text"
+        <div className="mb-4">
+          <label className="block text-gray-700">Address:</label>
+          <select
             name="address"
             value={event.address}
             onChange={handleChange}
             required
-          />
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">All Locations</option>
+            <option value="alangilan">Alangilan</option>
+            <option value="anilao">Anilao</option>
+            <option value="balagtas">Balagtas</option>
+            <option value="bolbok">Bolbok</option>
+            <option value="delapaz">Dela Paz</option>
+            <option value="dumuclay">Dumuclay</option>
+            <option value="guloditaas">Gulod Itaas</option>
+            <option value="ilijan">Ilijan</option>
+            <option value="lipa">Lipa</option>
+            <option value="libjo">Libjo</option>
+            <option value="pallocan">Pallocan</option>
+            <option value="pagkilatan">Pagkilatan</option>
+            <option value="sorosoro">Soro soro</option>
+            <option value="tabangao">Tabangao</option>
+            <option value="talumpok">Talumpok</option>
+            <option value="tulo">Tulo</option>
+          </select>
         </div>
-        <div>
-          <label>Event Date:</label>
+        <div className="mb-4">
+          <label className="block text-gray-700">Event Date:</label>
           <input
             type="datetime-local"
             name="eventdate"
             value={event.eventdate}
             onChange={handleChange}
             required
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <button type="submit">Add Event</button>
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Add Event
+        </button>
       </form>
     </div>
   )
